@@ -25,12 +25,17 @@ public class StartedService extends Service {
     @Override
     public void onCreate() {
         Log.d(this.getClass().getName(), " onCreate(): " + number + " (" + android.os.Process.myPid() + " - " + Thread.currentThread().getName() + ")");
-        serviceThread = new ServiceThread(5);
-        serviceThread.start();
+        //serviceThread = new ServiceThread(5);
+        //serviceThread.start();
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startID) {
         Log.d(this.getClass().getName(), "onStartCommand() " + number + " (" + android.os.Process.myPid() + " - " + Thread.currentThread().getName() + ")");
+        int count = intent.getIntExtra("Count", -1);
+        if (count >= 0) {
+            serviceThread = new ServiceThread(count);
+            serviceThread.start();
+        }
         return START_STICKY;
     }
     @Override
