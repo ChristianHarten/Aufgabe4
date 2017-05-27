@@ -10,12 +10,14 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="startService"
         android:text="@string/start_button_text"/>
 
     <Button
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="stopService"
         android:text="@string/stop_button_text"/>
 
 </LinearLayout>
