@@ -18,8 +18,16 @@ public class PlayerService extends Service {
     }
     @Override
     public void onCreate() {
+        //player = MediaPlayer.create(this, R.raw.groove);
+        //player.start();
+    }
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startID) {
         player = MediaPlayer.create(this, R.raw.groove);
-        player.start();
+        if (player.isPlaying()) {
+            player.start();
+        }
+        return START_NOT_STICKY;
     }
     @Override
     public void onDestroy() {
