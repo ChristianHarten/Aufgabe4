@@ -33,8 +33,13 @@ public class StartedService extends Service {
         Log.d(this.getClass().getName(), "onStartCommand() " + number + " (" + android.os.Process.myPid() + " - " + Thread.currentThread().getName() + ")");
         int count = intent.getIntExtra("Count", -1);
         if (count >= 0) {
-            serviceThread = new ServiceThread(count);
-            serviceThread.start();
+            if (serviceThread == null) {
+                serviceThread = new ServiceThread(count);
+                serviceThread.start();
+            }
+            else {
+                serviceThread.setCount(count);
+            }
         }
         return START_STICKY;
     }

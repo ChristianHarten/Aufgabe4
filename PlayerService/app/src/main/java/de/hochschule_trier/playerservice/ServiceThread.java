@@ -28,7 +28,7 @@ public class ServiceThread extends Thread {
 
         }
     }
-    public void setCount(int newCount) {
+    public synchronized void setCount(int newCount) {
         this.count = i < newCount ? newCount : 0;
     }
 }
