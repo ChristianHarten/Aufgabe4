@@ -28,7 +28,6 @@ public class PlayerService extends Service {
             player.release();
             player = null;
         }
-        Toast.makeText(this, "YO", Toast.LENGTH_SHORT).show();
         player = MediaPlayer.create(this, R.raw.groove);
         player.start();
         return START_NOT_STICKY;
