@@ -2,4 +2,6 @@
     <string name="app_name">PlayerService</string>
     <string name="start_button_text">Starte Service</string>
     <string name="stop_button_text">Stoppe Service</string>
+    <string name="start_service_thread_button_text">Starte Service mit Thread</string>
+    <string name="stop_service_thread_button_text">Stoppe Service mit Thread</string>
 </resources>
