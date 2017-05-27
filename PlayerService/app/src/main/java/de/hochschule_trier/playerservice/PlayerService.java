@@ -25,8 +25,9 @@ public class PlayerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startID) {
         player = MediaPlayer.create(this, R.raw.groove);
         if (player.isPlaying()) {
-            player.start();
+            player.stop();
         }
+        player.start();
         return START_NOT_STICKY;
     }
     @Override
