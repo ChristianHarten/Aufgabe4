@@ -13,9 +13,6 @@ public class ServiceThread extends Thread {
     private int count, i;
     private Service service;
 
-    public ServiceThread (int count) {
-        this(count, null);
-    }
     public ServiceThread (int count, Service service) {
         this.count = count;
         this.i = 0;
