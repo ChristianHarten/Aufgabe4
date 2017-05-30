@@ -34,7 +34,7 @@ public class StartedService extends Service {
         int count = intent.getIntExtra("Count", -1);
         if (count >= 0) {
             if (serviceThread == null) {
-                serviceThread = new ServiceThread(count);
+                serviceThread = new ServiceThread(count, this);
                 serviceThread.start();
             }
             else {

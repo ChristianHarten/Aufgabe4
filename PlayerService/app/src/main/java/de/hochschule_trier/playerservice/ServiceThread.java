@@ -1,5 +1,6 @@
 package de.hochschule_trier.playerservice;
 
+import android.app.Service;
 import android.os.Process;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,10 +11,15 @@ import android.widget.Toast;
 
 public class ServiceThread extends Thread {
     private int count, i;
+    private Service service;
 
     public ServiceThread (int count) {
+        this(count, null);
+    }
+    public ServiceThread (int count, Service service) {
         this.count = count;
         this.i = 0;
+        this.service = service;
     }
     @Override
     public void run() {
@@ -21,7 +27,10 @@ public class ServiceThread extends Thread {
             while (i < count) {
                 i++;
                 Log.d(this.getClass().getName(), "service with thread " + android.os.Process.myPid() + " - " + Thread.currentThread().getName() + ", iteration " + i);
-                Thread.sleep(Toast.LENGTH_LONG);
+                Thread.sleep(2000);
+            }
+            if (i == count) {
+                service.stopSelf();
             }
         }
         catch (Exception e) {
@@ -30,5 +39,11 @@ public class ServiceThread extends Thread {
     }
     public synchronized void setCount(int newCount) {
         this.count = i < newCount ? newCount : 0;
+    }
+    public synchronized int getCount() {
+        return this.count;
+    }
+    public synchronized int getI() {
+        return this.i;
     }
 }
