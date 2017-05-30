@@ -40,10 +40,4 @@ public class ServiceThread extends Thread {
     public synchronized void setCount(int newCount) {
         this.count = i < newCount ? newCount : 0;
     }
-    public synchronized int getCount() {
-        return this.count;
-    }
-    public synchronized int getI() {
-        return this.i;
-    }
 }
