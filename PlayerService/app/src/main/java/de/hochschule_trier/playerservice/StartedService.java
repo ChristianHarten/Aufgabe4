@@ -41,7 +41,7 @@ public class StartedService extends Service {
                 serviceThread.setCount(count);
             }
         }
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
     @Override
     public void onDestroy() {
